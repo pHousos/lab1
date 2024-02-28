@@ -18,7 +18,7 @@ try:
             
             print("\nCookies:")
             for cookie in response.cookies:
-                print(f"Name: {cookie.name}, Value: {cookie.value}")
+                print(f"Name: {cookie.name}")
                 expiration_date = datetime.fromtimestamp(cookie.expires)
                 formatted_date = expiration_date.strftime("%d/%m/%Y %H:%M:%S")
                 print(f"Expires: {formatted_date}")
