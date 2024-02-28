@@ -12,5 +12,11 @@ try:
             print(f"The server is powered by: {server_software}")
         else:
             print("Server software information not available.")
+        
+        # Έλεγχος για τη χρήση cookies
+        if 'Set-Cookie' in response.headers:
+            print("The page uses cookies.")
+        else:
+            print("The page does not use cookies.")
 except requests.RequestException as e:
     print("Error fetching URL:", e)
