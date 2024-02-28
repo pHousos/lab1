@@ -18,9 +18,10 @@ try:
             
             print("\nCookies:")
             for cookie in response.cookies:
-                print(f"Name: {cookie.name}")
+                print(f"Name: {cookie.name}, Value: {cookie.value}")
                 expiration_date = datetime.fromtimestamp(cookie.expires)
-                print(f"Expires: {expiration_date}")
+                formatted_date = expiration_date.strftime("%d/%m/%Y %H:%M:%S")
+                print(f"Expires: {formatted_date}")
         else:
             print("The page does not use cookies.")
 except requests.RequestException as e:
