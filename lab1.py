@@ -1,20 +1,12 @@
 import requests
 
-def more(text):
-    count = 0
-    for line in text.split('\n'):
-        print(line)
-        count += 1
-        if count % 30 == 0:
-            reply = input('Show more (y/n)? ')
-            if reply == 'n':
-                break
-
-url = input("Enter the URL: ")  # ζήταει από τον χρήστη να εισάγει το URL
+url = input("Enter the URL: ")  # ζήτησε από τον χρήστη να εισάγει το URL
 
 try:
     with requests.get(url) as response:
-        html = response.text
-        more(html)
+        response.raise_for_status()  # Ελέγχει αν υπάρχει σφάλμα κατά την αίτηση
+        print("\nResponse Headers:")
+        for header, value in response.headers.items():
+            print(f"{header}: {value}")
 except requests.RequestException as e:
     print("Error fetching URL:", e)
